@@ -167,6 +167,9 @@ export async function getLinuxWineSet(
   protonPaths.forEach((path) => {
     if (existsSync(path)) {
       readdirSync(path).forEach((version) => {
+        if (version.startsWith("UMU-Latest")) {  // File is for internal use only
+          return
+        }
         const protonBin = join(path, version, 'proton')
         // check if bin exists to avoid false positives
         if (existsSync(protonBin)) {

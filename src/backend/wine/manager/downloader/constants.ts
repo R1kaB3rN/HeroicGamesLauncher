@@ -1,6 +1,6 @@
 /// Url to Wine GE github release page
-export const WINEGE_URL =
-  'https://api.github.com/repos/GloriousEggroll/wine-ge-custom/releases'
+export const UMUPROTON_URL =
+  'https://api.github.com/repos/Open-Wine-Components/umu-proton/releases'
 
 /// Url to Proton GE github release page
 export const PROTONGE_URL =

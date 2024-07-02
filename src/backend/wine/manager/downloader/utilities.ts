@@ -31,6 +31,7 @@ async function fetchReleases({
       .get(url + '?per_page=' + count)
       .then((data) => {
         for (const release of data.data) {
+          console.log(`${release}`)
           const release_data = {} as VersionInfo
           release_data.version = type.includes('Wine')
             ? `Wine-${release.tag_name}`
@@ -38,6 +39,8 @@ async function fetchReleases({
           release_data.type = type
           release_data.date = release.published_at.split('T')[0]
           release_data.disksize = 0
+          console.log(`${release_data.type}`)
+          console.log(`${release_data.date}`)
 
           for (const asset of release.assets) {
             if (asset.name.endsWith('sha512sum')) {

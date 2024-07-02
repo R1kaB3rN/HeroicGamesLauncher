@@ -10,7 +10,7 @@ import {
 } from 'graceful-fs'
 
 import {
-  WINEGE_URL,
+  UMUPROTON_URL,
   PROTONGE_URL,
   PROTON_URL,
   WINELUTRIS_URL,
@@ -43,17 +43,17 @@ interface getVersionsProps {
  *          * rejects with an {@link Error}
  */
 async function getAvailableVersions({
-  repositorys = [Repositorys.WINEGE, Repositorys.PROTONGE],
+  repositorys = [Repositorys.UMUPROTON, Repositorys.PROTONGE],
   count = 100
 }: getVersionsProps): Promise<VersionInfo[]> {
   const releases: Array<VersionInfo> = []
 
   for await (const repo of repositorys) {
     switch (repo) {
-      case Repositorys.WINEGE: {
+      case Repositorys.UMUPROTON: {
         await fetchReleases({
-          url: WINEGE_URL,
-          type: 'Wine-GE',
+          url: UMUPROTON_URL,
+          type: 'UMU-Proton',
           count: count
         })
           .then((fetchedReleases: VersionInfo[]) => {

@@ -46,8 +46,8 @@ export default function WineManager(): JSX.Element | null {
   const isLinux = platform === 'linux'
 
   const winege: WineManagerUISettings = {
-    type: 'Wine-GE',
-    value: 'winege',
+    type: 'UMU-Proton',
+    value: 'umuproton',
     enabled: isLinux
   }
   const winecrossover: WineManagerUISettings = {
@@ -62,7 +62,7 @@ export default function WineManager(): JSX.Element | null {
   const [wineManagerSettings, setWineManagerSettings] = useState<
     WineManagerUISettings[]
   >([
-    { type: 'Wine-GE', value: 'winege', enabled: isLinux },
+    { type: 'UMU-Proton', value: 'umuproton', enabled: isLinux },
     { type: 'Proton-GE', value: 'protonge', enabled: isLinux },
     { type: 'Wine-Crossover', value: 'winecrossover', enabled: !isLinux },
     { type: 'Wine-Staging-macOS', value: 'winestagingmacos', enabled: !isLinux }
@@ -71,8 +71,8 @@ export default function WineManager(): JSX.Element | null {
   const getWineVersions = (repo: Type) => {
     let versions = wineDownloaderInfoStore.get('wine-releases', [])
 
-    if (repo.startsWith('Wine-GE')) {
-      versions = versions.filter((version) => version.type === 'Wine-GE')
+    if (repo.startsWith('UMU-Proton')) {
+      versions = versions.filter((version) => version.type === 'UMU-Proton')
       return versions.filter((version) => !version.version.endsWith('LoL'))
     } else {
       return versions.filter((version) => version.type === repo)
@@ -111,13 +111,13 @@ export default function WineManager(): JSX.Element | null {
 
   const wineVersionExplanation = useMemo(() => {
     switch (repository.type) {
-      case 'Wine-GE':
+      case 'UMU-Proton':
         return (
           <div className="infoBox">
             <FontAwesomeIcon icon={faCheck} color={'green'} />
             {t(
-              'wineExplanation.wine-ge',
-              'Wine-GE-Proton is a Wine variant created by Glorious Eggroll. It is the recommended Wine to be used outside Steam. This provides useful logs when troubleshooting.'
+              'wineExplanation.umu-proton',
+              'UMU-Proton is a Proton variant created by Glorious Eggroll based on a stable version of Valve\'s Proton.'
             )}
           </div>
         )
@@ -127,7 +127,7 @@ export default function WineManager(): JSX.Element | null {
             <FontAwesomeIcon icon={faWarning} color={'orange'} />
             {t(
               'wineExplanation.proton-ge',
-              'Proton-GE-Proton is a Proton variant created by Glorious Eggroll. It is meant to be used in Steam, but some games outside Steam may work better with this variant. It provides mostly useless logs for troubleshooting.'
+              'Proton-GE-Proton is a Proton variant created by Glorious Eggroll. It is meant to be used in Steam or UMU, but some games outside Steam may work better with this variant. It provides mostly useless logs for troubleshooting.'
             )}
           </div>
         )

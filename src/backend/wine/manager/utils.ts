@@ -41,7 +41,7 @@ async function updateWineVersionInfos(
 
     const repositorys = isMac
       ? [Repositorys.WINECROSSOVER, Repositorys.WINESTAGINGMACOS]
-      : [Repositorys.WINEGE, Repositorys.PROTONGE]
+      : [Repositorys.UMUPROTON, Repositorys.PROTONGE]
 
     await getAvailableVersions({
       repositorys,
